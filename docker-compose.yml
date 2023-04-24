@@ -1,0 +1,13 @@
+version: '3'
+services:
+  oracle-db:
+    container_name: security_demo_db
+    image: gvenzl/oracle-xe:21-slim
+    ports:
+      - "1521:1521"
+    volumes:
+      - C:\tmp\security-demo\oracle:/data
+    environment:
+      - ORACLE_PASSWORD=oracle
+volumes:
+  security-demo-data:

@@ -1,0 +1,12 @@
+DROP TABLE demo_db.users;
+CREATE TABLE demo_db.users
+(
+    ID         RAW(255)  NOT NULL,
+    EMAIL      VARCHAR2(100) NOT NULL,
+    PASSWORD   VARCHAR2(256) NOT NULL,
+    ROLE       SMALLINT      NOT NULL,
+    STATUS     SMALLINT      NOT NULL,
+    CREATED_ON DATE          NOT NULL,
+    CONSTRAINT pk_users PRIMARY KEY ("ID"),
+    CONSTRAINT uq_email UNIQUE ("EMAIL")
+);
