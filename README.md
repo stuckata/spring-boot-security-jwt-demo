@@ -26,10 +26,10 @@
 git clone https://github.com/stuckata/spring-boot-security-jwt-demo.git 
 ```
 
-### Run DB (using docker-compose)
+### Create and start DB container (using docker-compose)
 
 ``` 
-docker compose up -d 
+docker-compose up -d 
 ```
 
 ### Connect to the DB (using some DB tool like DBeaver or DataGrip)
@@ -52,6 +52,11 @@ db - [V0.0.1.20230424.1809.00359__init_db.sql](src%2Fmain%2Fresources%2Fdb%2Fora
 
 2). Create
 tables - [V0.0.1.20230424.1809.26326__create_table_users.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.26326__create_table_users.sql)
+
+### Stop Services (DB)
+``` 
+docker-compose stop
+```
 
 ### Change application.properties (if needed)
 
@@ -80,13 +85,16 @@ https://app.id123.io/free-tools/key-generator/
 - Public Key: [app.pub](src%2Fmain%2Fresources%2Fkeys%2Fapp.pub)
 - Private Key: [app.key](src%2Fmain%2Fresources%2Fkeys%2Fapp.key)
 
-### Run the Demo (with you IDE)
+### Start Services (DB)
+``` 
+docker-compose start
+```
+
+### Run the Demo App (with you IDE)
 
 ### Open Swagger UI
 
 > http://localhost:9090/swagger-ui/index.html
-
-## Implementation Explained
 
 ## Useful Commands & Links
 

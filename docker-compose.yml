@@ -9,5 +9,3 @@ services:
       - C:\tmp\security-demo\oracle:/data
     environment:
       - ORACLE_PASSWORD=oracle
-volumes:
-  security-demo-data:

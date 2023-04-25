@@ -20,10 +20,6 @@ public interface AuthenticationApi {
             summary = "Spring JWT Demo: Create Account/ Sign Up (Public Endpoint)",
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "Successful response"
-                    ),
-                    @ApiResponse(
                             responseCode = "204",
                             description = "Successful created"
                     ),
