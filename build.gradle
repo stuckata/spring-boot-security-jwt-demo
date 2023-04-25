@@ -30,10 +30,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
-    // DB (Oracle)
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
-
     // JWT
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     implementation 'org.springframework.security:spring-security-oauth2-jose'
@@ -43,6 +39,10 @@ dependencies {
 
     // OpenApi + Swagger
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
+
+    // DB (Oracle)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
 
     // Apache commons
     implementation 'org.apache.commons:commons-lang3:3.12.0'

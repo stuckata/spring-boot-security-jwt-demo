@@ -2,40 +2,63 @@
 
 - Swagger URL: http://localhost:9090/swagger-ui/index.html
 
+## Tech Stack:
+
+- Java 17
+- Spring Boot 2.7.11
+  - spring-boot-starter-web (to enable REST)
+  - spring-boot-starter-security (to enable Spring Security)
+  - spring-boot-starter-oauth2-resource-server (provides support for OAuth 2.0 Bearer Tokens) - https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html
+  - spring-security-oauth2-jose (provides support for decoding and verifying JWTs)
+  - spring-boot-starter-data-jpa (to manage DB objects)
+- org.bouncycastle:bcprov-jdk15on (lightweight Java cryptography API) - https://www.bouncycastle.org/java.html
+- org.springdoc:springdoc-openapi-ui (Spring Boot support for OpenAPI 3) - https://springdoc.org/
+- Oracle 21 XE DB (the DB)
+- Lombok (remove boilerplate code) - https://projectlombok.org/
+- commons-lang3 (provides popular utility methods) - https://commons.apache.org/proper/commons-lang/
+- Gradle 7.6 (Build Tool) - https://docs.gradle.org/current/userguide/what_is_gradle.html
+
 ## Run current project
 
 ### Checkout current project
+
 ``` 
 git clone https://github.com/stuckata/spring-boot-security-jwt-demo.git 
 ```
 
 ### Run DB (using docker-compose)
+
 ``` 
 docker compose up -d 
 ```
 
 ### Connect to the DB (using some DB tool like DBeaver or DataGrip)
+
 ```properties
 url=jdbc:oracle:thin:@localhost:1521:XE
 user=system
 pwd=oracle
 ```
+
 DataGrip Example:
 ![DataGrip_Example.png](docs/DataGrip_Example.png)
 
 ### Init DB (execute initial scripts)
+
 Run the SQL scripts, located under ```/src/main/resources/db/oracle``` in the order they appear.
 
-1). Init db - [V0.0.1.20230424.1809.00359__init_db.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.00359__init_db.sql)
+1). Init
+db - [V0.0.1.20230424.1809.00359__init_db.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.00359__init_db.sql)
 
-2). Create tables - [V0.0.1.20230424.1809.26326__create_table_users.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.26326__create_table_users.sql)
+2). Create
+tables - [V0.0.1.20230424.1809.26326__create_table_users.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.26326__create_table_users.sql)
 
 ### Change application.properties (if needed)
 
 You can see different settings there, that can be modified.
 [application.properties](src%2Fmain%2Fresources%2Fapplication.properties)
 
-### Change application-dev.properties (if needed) 
+### Change application-dev.properties (if needed)
 
 You can see different settings there, that can be modified.
 [application-dev.properties](src%2Fmain%2Fresources%2Fapplication-dev.properties)
@@ -46,6 +69,7 @@ IntelliJ IDEA:
 ![IntelliJ_IDEA_Profile_Selection.png](docs/IntelliJ_IDEA_Profile_Selection.png)
 
 ### Generate *YOUR OWN* Public-Private Key Pair
+
 1). You can use some free online tool like this one:
 https://app.id123.io/free-tools/key-generator/
 
@@ -59,13 +83,15 @@ https://app.id123.io/free-tools/key-generator/
 ### Run the Demo (with you IDE)
 
 ### Open Swagger UI
- > http://localhost:9090/swagger-ui/index.html
+
+> http://localhost:9090/swagger-ui/index.html
 
 ## Implementation Explained
 
-
 ## Useful Commands & Links
+
 ### Decode JWT
+
 Go to https://jwt.io/
 
 ![JWT_IO.png](docs/JWT_IO.png)
