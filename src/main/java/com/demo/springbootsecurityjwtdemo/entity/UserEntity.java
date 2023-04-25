@@ -28,9 +28,11 @@ public class UserEntity {
     private String password;
 
     @Column(name = "ROLE", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
     private UserRoleEntity role;
 
     @Column(name = "STATUS", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
     private UserStatusEntity status;
 
     @Column(name = "CREATED_ON", nullable = false)
