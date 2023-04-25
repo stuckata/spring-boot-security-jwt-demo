@@ -1,5 +1,6 @@
 # Spring Boot JWT Demo
 
+http://localhost:9090/swagger-ui/index.html
 
 ## How-to create a project
 
@@ -24,4 +25,7 @@ git push -u origin main
 https://app.id123.io/free-tools/key-generator/
 
 
-##
+## Kill process, listening on specific port
+
+> netstat -ano | findstr :1521
+> taskkill /PID 4376 /F
