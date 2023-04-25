@@ -24,6 +24,10 @@ public interface AuthenticationApi {
                             description = "Successful response"
                     ),
                     @ApiResponse(
+                            responseCode = "204",
+                            description = "Successful created"
+                    ),
+                    @ApiResponse(
                             responseCode = "400",
                             description = "Bad Request",
                             content = @Content(schema = @Schema(implementation = ErrorResponseDto.class))

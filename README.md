@@ -89,4 +89,4 @@ https://app.id123.io/free-tools/key-generator/
 ## Other commands, that might be needed
 ### Kill process, listening on specific port
 > netstat -ano | findstr :1521
-> taskkill /PID 4376 /F
+> taskkill /PID <PID> /F
