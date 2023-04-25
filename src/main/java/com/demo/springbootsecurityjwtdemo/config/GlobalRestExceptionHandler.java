@@ -14,14 +14,15 @@ public class GlobalRestExceptionHandler {
 
     @ExceptionHandler(value = ApplicationException.class)
     protected ResponseEntity<ErrorResponseDto> handleApplicationException(ApplicationException ex) {
-        return createErrorResponse(ex.getCode(), ex.getArgs());
+        return createErrorResponse(ex.getCode(), ex.getMessage(), ex.getArgs());
     }
 
-    private ResponseEntity<ErrorResponseDto> createErrorResponse(ErrorCode errCode, List<String> args) {
+    private ResponseEntity<ErrorResponseDto> createErrorResponse(ErrorCode errCode, String message, List<String> args) {
         ErrorResponseDto errDto = ErrorResponseDto.builder()
                 .code(errCode.name())
-                .description(errCode.getDescription())
+                .pattern(errCode.getPattern())
                 .args(args)
+                .message(message)
                 .build();
         return ResponseEntity.status(errCode.getHttpStatus()).body(errDto);
     }

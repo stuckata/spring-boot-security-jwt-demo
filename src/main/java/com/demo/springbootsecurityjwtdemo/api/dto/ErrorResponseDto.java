@@ -14,6 +14,7 @@ import java.util.List;
 @Data
 public class ErrorResponseDto implements Serializable {
     private String code;
-    private String description;
+    private String pattern;
     private List<String> args;
+    private String message;
 }

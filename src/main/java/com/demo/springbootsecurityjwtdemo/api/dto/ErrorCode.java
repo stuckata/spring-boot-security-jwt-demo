@@ -23,18 +23,18 @@ public enum ErrorCode {
     USER_NOT_FOUND(HttpStatus.NOT_FOUND, "User not found"),
     ;
     private final HttpStatus httpStatus;
-    private final String description;
+    private final String pattern;
 
     @Override
     public String toString() {
-        return this.name() + ":" + this.description;
+        return this.name() + ":" + this.pattern;
     }
 
     public String format(String[] args) {
         if (args == null || args.length == 0) {
-            return this.description;
+            return this.pattern;
         }
-        String formatted = this.description;
+        String formatted = this.pattern;
         for (String arg : args) {
             formatted = formatted.replaceFirst(Pattern.quote("{}"), arg);
         }
