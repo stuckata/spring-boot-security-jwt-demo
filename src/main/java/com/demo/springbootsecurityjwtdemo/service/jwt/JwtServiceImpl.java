@@ -34,9 +34,10 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public String generateToken(Map<String, Objects> additionalClaims, UserDetails userDetails) {
-        String scope = userDetails.getAuthorities().stream()
+        String roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
+
         Instant now = Instant.now();
 
         JwtClaimsSet.Builder claimsBuilder = JwtClaimsSet.builder()
@@ -44,7 +45,7 @@ public class JwtServiceImpl implements JwtService {
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(this.jwtExpirationTimeInSeconds))
                 .subject(userDetails.getUsername())
-                .claim("scope", scope);
+                .claim("roles", roles);
         additionalClaims.forEach(claimsBuilder::claim);
         JwtClaimsSet claims = claimsBuilder.build();
 
