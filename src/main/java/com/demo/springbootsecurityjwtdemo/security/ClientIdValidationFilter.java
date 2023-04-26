@@ -1,4 +1,4 @@
-package com.demo.springbootsecurityjwtdemo.filter;
+package com.demo.springbootsecurityjwtdemo.security;
 
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
 import org.apache.commons.lang3.StringUtils;

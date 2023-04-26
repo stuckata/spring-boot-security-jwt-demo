@@ -1,12 +1,10 @@
-package com.demo.springbootsecurityjwtdemo.service.validation.impl;
+package com.demo.springbootsecurityjwtdemo.service.validation;
 
 import com.demo.springbootsecurityjwtdemo.api.dto.ErrorCode;
 import com.demo.springbootsecurityjwtdemo.entity.UserEntity;
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
 import com.demo.springbootsecurityjwtdemo.repository.UserRepository;
 import com.demo.springbootsecurityjwtdemo.service.encryption.EncryptionService;
-import com.demo.springbootsecurityjwtdemo.service.validation.EmailValidationService;
-import com.demo.springbootsecurityjwtdemo.service.validation.ValidationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,7 +13,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class UsernameValidationService implements ValidationService {
+public class UsernameValidationServiceImpl implements UsernameValidationService {
 
     @Value("${encryption.secret.email}")
     private String emailEncryptionSecret;

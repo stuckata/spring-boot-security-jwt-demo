@@ -1,7 +1,6 @@
-package com.demo.springbootsecurityjwtdemo.service.encryption.impl;
+package com.demo.springbootsecurityjwtdemo.service.encryption;
 
 
-import com.demo.springbootsecurityjwtdemo.service.encryption.HashService;
 import org.bouncycastle.crypto.generators.OpenBSDBCrypt;
 import org.springframework.stereotype.Service;
 

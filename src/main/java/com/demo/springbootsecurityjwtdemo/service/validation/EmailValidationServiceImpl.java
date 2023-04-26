@@ -1,8 +1,7 @@
-package com.demo.springbootsecurityjwtdemo.service.validation.impl;
+package com.demo.springbootsecurityjwtdemo.service.validation;
 
 import com.demo.springbootsecurityjwtdemo.api.dto.ErrorCode;
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
-import com.demo.springbootsecurityjwtdemo.service.validation.EmailValidationService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

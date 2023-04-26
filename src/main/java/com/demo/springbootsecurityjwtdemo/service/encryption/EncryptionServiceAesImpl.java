@@ -1,4 +1,4 @@
-package com.demo.springbootsecurityjwtdemo.service.encryption.impl;
+package com.demo.springbootsecurityjwtdemo.service.encryption;
 
 import com.demo.springbootsecurityjwtdemo.api.dto.ErrorCode;
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;

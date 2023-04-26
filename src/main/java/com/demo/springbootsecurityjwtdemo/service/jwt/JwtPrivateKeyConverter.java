@@ -1,4 +1,4 @@
-package com.demo.springbootsecurityjwtdemo.util;
+package com.demo.springbootsecurityjwtdemo.service.jwt;
 
 import org.springframework.boot.context.properties.ConfigurationPropertiesBinding;
 import org.springframework.core.convert.converter.Converter;
@@ -6,13 +6,13 @@ import org.springframework.security.converter.RsaKeyConverters;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;
-import java.security.interfaces.RSAPublicKey;
+import java.security.interfaces.RSAPrivateKey;
 
 @Component
 @ConfigurationPropertiesBinding
-public class MyPublicKeyConverter implements Converter<String, RSAPublicKey> {
+public class JwtPrivateKeyConverter implements Converter<String, RSAPrivateKey> {
     @Override
-    public RSAPublicKey convert(String from) {
-        return RsaKeyConverters.x509().convert(new ByteArrayInputStream(from.getBytes()));
+    public RSAPrivateKey convert(String from) {
+        return RsaKeyConverters.pkcs8().convert(new ByteArrayInputStream(from.getBytes()));
     }
 }

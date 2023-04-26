@@ -1,4 +1,4 @@
-package com.demo.springbootsecurityjwtdemo.service.impl;
+package com.demo.springbootsecurityjwtdemo.service;
 
 import com.demo.springbootsecurityjwtdemo.api.dto.CreateAccountRequestDto;
 import com.demo.springbootsecurityjwtdemo.api.dto.ErrorCode;
@@ -10,9 +10,8 @@ import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
 import com.demo.springbootsecurityjwtdemo.repository.UserRepository;
 import com.demo.springbootsecurityjwtdemo.service.encryption.EmailEncryptionService;
 import com.demo.springbootsecurityjwtdemo.service.encryption.HashService;
-import com.demo.springbootsecurityjwtdemo.service.UserService;
 import com.demo.springbootsecurityjwtdemo.service.validation.PasswordValidationService;
-import com.demo.springbootsecurityjwtdemo.service.validation.impl.UsernameValidationService;
+import com.demo.springbootsecurityjwtdemo.service.validation.UsernameValidationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -56,8 +55,9 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new ApplicationException(ErrorCode.USER_NOT_FOUND);
         }
-        String expectedPass = createHash(dto.getPassword(), user.getCreatedOn());
-        if (!user.getPassword().equalsIgnoreCase(expectedPass)) {
+
+        boolean passwordMatch = this.hashService.matchHash(dto.getPassword(), user.getPassword());
+        if (!passwordMatch) {
             throw new ApplicationException(ErrorCode.PASSWORD_MISMATCH);
         }
         return user;

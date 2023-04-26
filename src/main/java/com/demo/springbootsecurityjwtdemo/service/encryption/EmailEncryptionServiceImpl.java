@@ -1,8 +1,6 @@
-package com.demo.springbootsecurityjwtdemo.service.encryption.impl;
+package com.demo.springbootsecurityjwtdemo.service.encryption;
 
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
-import com.demo.springbootsecurityjwtdemo.service.encryption.EmailEncryptionService;
-import com.demo.springbootsecurityjwtdemo.service.encryption.EncryptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

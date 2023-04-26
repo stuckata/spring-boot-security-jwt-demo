@@ -1,9 +1,8 @@
-package com.demo.springbootsecurityjwtdemo.service.validation.impl;
+package com.demo.springbootsecurityjwtdemo.service.validation;
 
 
 import com.demo.springbootsecurityjwtdemo.api.dto.ErrorCode;
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
-import com.demo.springbootsecurityjwtdemo.service.validation.PasswordValidationService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,8 +14,10 @@ public class PasswordValidationServiceImpl implements PasswordValidationService 
 
     @Value("${user.password.regex}")
     private String pwdRegex;
+
     @Value("${user.password.minLength}")
     private Integer pwdMinLength;
+
     @Value("${user.password.maxLength}")
     private Integer pwdMaxLength;
 

@@ -1,8 +1,7 @@
-package com.demo.springbootsecurityjwtdemo.config;
+package com.demo.springbootsecurityjwtdemo.exception;
 
-import com.demo.springbootsecurityjwtdemo.api.dto.ErrorResponseDto;
-import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
 import com.demo.springbootsecurityjwtdemo.api.dto.ErrorCode;
+import com.demo.springbootsecurityjwtdemo.api.dto.ErrorResponseDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

@@ -1,12 +1,10 @@
-package com.demo.springbootsecurityjwtdemo.service.impl;
+package com.demo.springbootsecurityjwtdemo.service;
 
 import com.demo.springbootsecurityjwtdemo.api.dto.LoginRequestDto;
 import com.demo.springbootsecurityjwtdemo.entity.UserEntity;
 import com.demo.springbootsecurityjwtdemo.entity.UserStatusEntity;
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
-import com.demo.springbootsecurityjwtdemo.service.AuthenticationService;
 import com.demo.springbootsecurityjwtdemo.service.jwt.JwtService;
-import com.demo.springbootsecurityjwtdemo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
