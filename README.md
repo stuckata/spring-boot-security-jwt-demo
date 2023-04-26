@@ -12,8 +12,8 @@
   - spring-security-oauth2-jose (provides support for decoding and verifying JWTs)
   - spring-boot-starter-data-jpa (to manage DB objects)
 - org.bouncycastle:bcprov-jdk15on (lightweight Java cryptography API) - https://www.bouncycastle.org/java.html
-- org.springdoc:springdoc-openapi-ui (Spring Boot support for OpenAPI 3 & Swagger) - https://springdoc.org/
-- Oracle 21 XE DB (the DB)
+- org.springdoc:springdoc-openapi-ui (Spring Boot support for OpenAPI 3 & Swagger UI) - https://springdoc.org/
+- Oracle 21 XE DB - Oracle Express Edition
 - Lombok (to remove boilerplate code like accessors/ constructors/ etc) - https://projectlombok.org/
 - Apache commons-lang3 (provides popular utility methods) - https://commons.apache.org/proper/commons-lang/
 - Maven 3.8 (Build Tool)
