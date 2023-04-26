@@ -2,7 +2,7 @@
 
 - Swagger URL: http://localhost:9090/swagger-ui/index.html
 
-## Tech Stack:
+## 1. Tech Stack:
 
 - Java 17
 - Spring Boot 2.7.11
@@ -12,13 +12,13 @@
   - spring-security-oauth2-jose (provides support for decoding and verifying JWTs)
   - spring-boot-starter-data-jpa (to manage DB objects)
 - org.bouncycastle:bcprov-jdk15on (lightweight Java cryptography API) - https://www.bouncycastle.org/java.html
-- org.springdoc:springdoc-openapi-ui (Spring Boot support for OpenAPI 3) - https://springdoc.org/
+- org.springdoc:springdoc-openapi-ui (Spring Boot support for OpenAPI 3 & Swagger) - https://springdoc.org/
 - Oracle 21 XE DB (the DB)
-- Lombok (remove boilerplate code) - https://projectlombok.org/
-- commons-lang3 (provides popular utility methods) - https://commons.apache.org/proper/commons-lang/
-- Gradle 7.6 (Build Tool) - https://docs.gradle.org/current/userguide/what_is_gradle.html
+- Lombok (to remove boilerplate code like accessors/ constructors/ etc) - https://projectlombok.org/
+- Apache commons-lang3 (provides popular utility methods) - https://commons.apache.org/proper/commons-lang/
+- Maven 3.8 (Build Tool)
 
-## Run current project
+## 2. Configure the DEMO (*do it only once*)
 
 ### Checkout current project
 
@@ -26,8 +26,9 @@
 git clone https://github.com/stuckata/spring-boot-security-jwt-demo.git 
 ```
 
-### Create and start DB container (using docker-compose)
+### Create & Start the DB container (using docker-compose)
 
+Use this command only the first time to create & start the DB container.
 ``` 
 docker-compose up -d 
 ```
@@ -85,16 +86,20 @@ https://app.id123.io/free-tools/key-generator/
 - Public Key: [app.pub](src%2Fmain%2Fresources%2Fkeys%2Fapp.pub)
 - Private Key: [app.key](src%2Fmain%2Fresources%2Fkeys%2Fapp.key)
 
+## 3. Start the DEMO
+
 ### Start Services (DB)
 ``` 
 docker-compose start
 ```
-
 ### Run the Demo App (with you IDE)
+Use your favorite IDE to run the app as Spring Application.
 
 ### Open Swagger UI
+Swagger UI allows you to access all exposed REST endpoints.
 
 > http://localhost:9090/swagger-ui/index.html
+
 
 ## Useful Commands & Links
 
@@ -110,33 +115,4 @@ Go to https://jwt.io/
 > netstat -ano | findstr :1521
 
 > taskkill /PID <PID> /F
-```
-
-### Create NEW Project
-
-Use this steps to create a new project.
-
-#### Generate Spring Boot project
-
-1). Go to ["Spring Initializr"](https://start.spring.io/)
-
-2). Select whatever you need
-
-3). Add the dependencies you need
-
-4). Generate Project
-![Spring_Initilizr.png](docs/Spring_Initilizr.png)
-
-5). Unzip and open with some IDE
-
-#### Add project to GIT
-
-```
-echo "# spring-boot-security-jwt-demo" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/stuckata/spring-boot-security-jwt-demo.git
-git push -u origin main
 ```
