@@ -1,4 +1,4 @@
-DROP TABLE demo_db.users;
+-- DROP TABLE demo_db.users;
 CREATE TABLE demo_db.users
 (
     ID         RAW(255)      NOT NULL,

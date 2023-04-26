@@ -2,67 +2,72 @@
 
 - Swagger URL: http://localhost:9090/swagger-ui/index.html
 
-## Create NEW Project
+## 1. Tech Stack:
 
-Use this steps to create a new project.
+- Java 17
+- Spring Boot 2.7.11
+  - spring-boot-starter-web (to enable REST)
+  - spring-boot-starter-security (to enable Spring Security)
+  - spring-boot-starter-oauth2-resource-server (provides support for OAuth 2.0 Bearer Tokens) - https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html
+  - spring-security-oauth2-jose (provides support for decoding and verifying JWTs)
+  - spring-boot-starter-data-jpa (to manage DB objects)
+- org.bouncycastle:bcprov-jdk15on (lightweight Java cryptography API) - https://www.bouncycastle.org/java.html
+- org.springdoc:springdoc-openapi-ui (Spring Boot support for OpenAPI 3 & Swagger) - https://springdoc.org/
+- Oracle 21 XE DB (the DB)
+- Lombok (to remove boilerplate code like accessors/ constructors/ etc) - https://projectlombok.org/
+- Apache commons-lang3 (provides popular utility methods) - https://commons.apache.org/proper/commons-lang/
+- Maven 3.8 (Build Tool)
 
-### Generate Spring Boot project
-
-1). Go to ["Spring Initializr"](https://start.spring.io/)
-
-2). Select whatever you need
-
-3). Add the dependencies you need
-
-4). Generate Project
-![Spring_Initilizr.png](docs/Spring_Initilizr.png)
-
-5). Unzip and open with some IDE
-
-### Add project to GIT
-
-```
-echo "# spring-boot-security-jwt-demo" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/stuckata/spring-boot-security-jwt-demo.git
-git push -u origin main
-```
-
-
-## Run current project
+## 2. Configure the DEMO (*do it only once*)
 
 ### Checkout current project
-> git clone https://github.com/stuckata/spring-boot-security-jwt-demo.git
 
-### Run DB (using docker-compose)
-> docker compose up -d
+``` 
+git clone https://github.com/stuckata/spring-boot-security-jwt-demo.git 
+```
+
+### Create & Start the DB container (using docker-compose)
+
+Use this command only the first time to create & start the DB container.
+``` 
+docker-compose up -d 
+```
 
 ### Connect to the DB (using some DB tool like DBeaver or DataGrip)
+
 ```properties
 url=jdbc:oracle:thin:@localhost:1521:XE
 user=system
 pwd=oracle
 ```
+
 DataGrip Example:
 ![DataGrip_Example.png](docs/DataGrip_Example.png)
 
 ### Init DB (execute initial scripts)
+
 Run the SQL scripts, located under ```/src/main/resources/db/oracle``` in the order they appear.
 
-1). Init db - [V0.0.1.20230424.1809.00359__init_db.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.00359__init_db.sql)
+1). Init
+db - [V0.0.1.20230424.1809.00359__init_db.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.00359__init_db.sql)
 
-2). Create tables - [V0.0.1.20230424.1809.26326__create_table_users.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.26326__create_table_users.sql)
+2). Create
+tables - [V0.0.1.20230424.1809.26326__create_table_users.sql](src%2Fmain%2Fresources%2Fdb%2Foracle%2FV0.0.1.20230424.1809.26326__create_table_users.sql)
+
+### Stop Services (DB)
+``` 
+docker-compose stop
+```
 
 ### Change application.properties (if needed)
 
 You can see different settings there, that can be modified.
+[application.properties](src%2Fmain%2Fresources%2Fapplication.properties)
 
-### Change application-dev.properties (if needed) 
+### Change application-dev.properties (if needed)
 
 You can see different settings there, that can be modified.
+[application-dev.properties](src%2Fmain%2Fresources%2Fapplication-dev.properties)
 
 ### Select "dev" Spring profile to run the example
 
@@ -70,6 +75,7 @@ IntelliJ IDEA:
 ![IntelliJ_IDEA_Profile_Selection.png](docs/IntelliJ_IDEA_Profile_Selection.png)
 
 ### Generate *YOUR OWN* Public-Private Key Pair
+
 1). You can use some free online tool like this one:
 https://app.id123.io/free-tools/key-generator/
 
@@ -77,16 +83,36 @@ https://app.id123.io/free-tools/key-generator/
 
 2). Copy & Paste generated values to: ```/src/main/resources/keys```
 
-### Run the Demo (with you IDE)
+- Public Key: [app.pub](src%2Fmain%2Fresources%2Fkeys%2Fapp.pub)
+- Private Key: [app.key](src%2Fmain%2Fresources%2Fkeys%2Fapp.key)
+
+## 3. Start the DEMO
+
+### Start Services (DB)
+``` 
+docker-compose start
+```
+### Run the Demo App (with you IDE)
+Use your favorite IDE to run the app as Spring Application.
 
 ### Open Swagger UI
- > http://localhost:9090/swagger-ui/index.html
+Swagger UI allows you to access all exposed REST endpoints.
+
+> http://localhost:9090/swagger-ui/index.html
 
 
-## Implementation Explained
+## Useful Commands & Links
 
+### Decode JWT
 
-## Other commands, that might be needed
+Go to https://jwt.io/
+
+![JWT_IO.png](docs/JWT_IO.png)
+
 ### Kill process, listening on specific port
+
+```
 > netstat -ano | findstr :1521
+
 > taskkill /PID <PID> /F
+```
