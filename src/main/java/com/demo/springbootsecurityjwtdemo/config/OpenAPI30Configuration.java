@@ -39,7 +39,7 @@ import org.springframework.context.annotation.Configuration;
                 )})
 public class OpenAPI30Configuration {
 
-    private static final String SECURITY_SCHEME = "bearerAuth";
+    public static final String SECURITY_SCHEME_BEARER_TOKEN = "bearerAuth";
 
     /**
      * Configure the OpenAPI components.
@@ -51,10 +51,10 @@ public class OpenAPI30Configuration {
     public OpenAPI customizeOpenAPI() {
 
         return new OpenAPI()
-                .addSecurityItem(new SecurityRequirement().addList(SECURITY_SCHEME))
+                .addSecurityItem(new SecurityRequirement().addList(SECURITY_SCHEME_BEARER_TOKEN))
                 .components(new Components()
-                        .addSecuritySchemes(SECURITY_SCHEME, new SecurityScheme()
-                                .name(SECURITY_SCHEME)
+                        .addSecuritySchemes(SECURITY_SCHEME_BEARER_TOKEN, new SecurityScheme()
+                                .name(SECURITY_SCHEME_BEARER_TOKEN)
                                 .type(SecurityScheme.Type.HTTP)
                                 .scheme("bearer")
                                 .description(

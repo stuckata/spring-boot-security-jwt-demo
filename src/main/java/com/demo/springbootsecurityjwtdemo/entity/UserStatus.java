@@ -1,6 +1,6 @@
 package com.demo.springbootsecurityjwtdemo.entity;
 
-public enum UserStatusEntity {
+public enum UserStatus {
     ACTIVE,
     TERMINATED
 }

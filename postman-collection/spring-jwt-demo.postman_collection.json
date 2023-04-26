@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "c8cb8e5c-1166-49e9-a30f-74fcbe867607",
+		"name": "spring-jwt-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9090/api/auth/account/create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Client-ID",
+						"value": "1111",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"asdf@gmail.com\",\r\n  \"password\": \"Password2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/auth/account/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"auth",
+						"account",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/api/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Client-ID",
+						"value": "1111",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"asdf@gmail.com\",\r\n  \"password\": \"Password2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9090/api/auth/login Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJTcHJpbmcgSldUIERlbW8iLCJzdWIiOiJhc2RmQGdtYWlsLmNvbSIsImV4cCI6MTY4MjUyMzAzOCwiaWF0IjoxNjgyNTE5NDM4LCJyb2xlcyI6IlVTRVIifQ.SKXzvbiiScJWDSlvBnSIbSOLsaLUdB0GWTh0-cuPSUntWX5bN9pp0tgkPWmktt66ouzhIM8WQYB8YLt7hQHXiKmdv2NUrABPgajk8v-JoP0mqVqmR9-grdRnWLZGHDG6na5VSNeo_pZjvji-l-x43TO_SKCYVo43RdaH2_VjNE3Bpz_VLMDMjtfz6T4rlj0Rx-iQEm563-u--pJJfmKf72VAAxfaHNAtRJ2Lx99u4R91HXDKUePdM6nLyID9_AH0GV_r3Ek6aszcAM03h-tIHqXzwCqSmjK6T2imj3ti2tZDVPX0D5NYkJRAZcE4UGLelovpEe9yTqTgCo3Xj9qbUQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Client-ID",
+						"value": "1111",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/api/auth/token/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"auth",
+						"token",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

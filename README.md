@@ -92,7 +92,7 @@ https://app.id123.io/free-tools/key-generator/
 ``` 
 docker-compose start
 ```
-### Run the Demo App (with you IDE)
+### Run the Demo App (with your IDE)
 Use your favorite IDE to run the app as Spring Application.
 
 ### Open Swagger UI

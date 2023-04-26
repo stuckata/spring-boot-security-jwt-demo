@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 
+import static com.demo.springbootsecurityjwtdemo.config.OpenAPI30Configuration.SECURITY_SCHEME_BEARER_TOKEN;
+
 public interface AuthenticationApi {
 
     String CLIENT_ID_HEADER = "Client-ID";
@@ -21,7 +23,7 @@ public interface AuthenticationApi {
             responses = {
                     @ApiResponse(
                             responseCode = "204",
-                            description = "Successful created"
+                            description = "Successfully created"
                     ),
                     @ApiResponse(
                             responseCode = "400",
@@ -138,7 +140,7 @@ public interface AuthenticationApi {
     @PostMapping(
             path = "/token/refresh"
     )
-    @SecurityRequirement(name = "bearerAuth")
+    @SecurityRequirement(name = SECURITY_SCHEME_BEARER_TOKEN)
     ResponseEntity<TokenResponseDto> refreshToken(
             @RequestHeader(value = CLIENT_ID_HEADER) String clientId
     ) throws ApplicationException;

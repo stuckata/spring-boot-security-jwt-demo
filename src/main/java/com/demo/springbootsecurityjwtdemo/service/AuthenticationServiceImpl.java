@@ -2,7 +2,7 @@ package com.demo.springbootsecurityjwtdemo.service;
 
 import com.demo.springbootsecurityjwtdemo.api.dto.LoginRequestDto;
 import com.demo.springbootsecurityjwtdemo.entity.UserEntity;
-import com.demo.springbootsecurityjwtdemo.entity.UserStatusEntity;
+import com.demo.springbootsecurityjwtdemo.entity.UserStatus;
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
 import com.demo.springbootsecurityjwtdemo.service.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +37,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     private String generateToken(UserEntity userEntity, String email) throws ApplicationException {
-        boolean isActive = UserStatusEntity.ACTIVE.equals(userEntity.getStatus());
+        boolean isActive = UserStatus.ACTIVE.equals(userEntity.getStatus());
         if (!isActive) {
             throw new ApplicationException(USER_ACCOUNT_NOT_ACTIVE);
         }
