@@ -100,6 +100,8 @@ Swagger UI allows you to access all exposed REST endpoints.
 
 > http://localhost:9090/swagger-ui/index.html
 
+### Use Postman Collection
+```postman-collection/spring-jwt-demo.postman_collection.json```
 
 ## Useful Commands & Links
 
