@@ -23,7 +23,7 @@
 ### Checkout current project
 
 ``` 
-git clone https://github.com/stuckata/spring-boot-security-jwt-demo.git 
+git clone https://github.dxc.com/skirkov/spring-boot-security-jwt-demo.git
 ```
 
 ### Create & Start the DB container (using docker-compose)
