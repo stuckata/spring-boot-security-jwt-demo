@@ -86,7 +86,9 @@ public class SecurityConfiguration {
         return securityConfig.build();
     }
 
-    // Used by spring security if CORS is enabled.
+    /**
+     * Used by spring security if CORS is enabled.
+     */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();

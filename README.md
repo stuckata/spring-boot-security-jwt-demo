@@ -2,23 +2,29 @@
 
 - Swagger URL: http://localhost:9090/swagger-ui/index.html
 
-## 1. Tech Stack:
+## 1. Tech Stack
 
 - Java 17
 - Spring Boot 2.7.11
-  - spring-boot-starter-web (to enable REST)
-  - spring-boot-starter-security (to enable Spring Security)
-  - spring-boot-starter-oauth2-resource-server (provides support for OAuth 2.0 Bearer Tokens) - https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html
-  - spring-security-oauth2-jose (provides support for decoding and verifying JWTs)
-  - spring-boot-starter-data-jpa (to manage DB objects)
-- org.bouncycastle:bcprov-jdk15on (lightweight Java cryptography API) - https://www.bouncycastle.org/java.html
-- org.springdoc:springdoc-openapi-ui (Spring Boot support for OpenAPI 3 & Swagger UI) - https://springdoc.org/
-- Oracle 21 XE DB - Oracle Express Edition
-- Lombok (to remove boilerplate code like accessors/ constructors/ etc) - https://projectlombok.org/
-- Apache commons-lang3 (provides popular utility methods) - https://commons.apache.org/proper/commons-lang/
-- Maven 3.8 (Build Tool)
+  - spring-boot-starter-web (**to enable REST**)
+  - spring-boot-starter-security (**to enable Spring Security**)
+  - spring-boot-starter-oauth2-resource-server (**provides support for OAuth 2.0 Bearer Tokens**) - https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/index.html
+  - spring-security-oauth2-jose (**provides support for decoding and verifying JWTs**)
+  - spring-boot-starter-data-jpa (**to manage DB objects**)
+- org.bouncycastle:bcprov-jdk15on (**lightweight Java cryptography API**) - https://www.bouncycastle.org/java.html
+- org.springdoc:springdoc-openapi-ui (**Spring Boot support for OpenAPI 3 & Swagger UI**) - https://springdoc.org/
+- Oracle 21 XE DB - (**Oracle Express Edition**)
+- Lombok (**to remove boilerplate code like accessors/ constructors/ etc**) - https://projectlombok.org/
+- Apache commons-lang3 (**provides popular utility methods**) - https://commons.apache.org/proper/commons-lang/
+- Maven 3.8 (**Build Tool**)
 
-## 2. Configure the DEMO (*do it only once*)
+## 2. Prerequisites
+You need the following pre-installed on your machine:
+- Your favourite Java IDE
+- Java 17
+- Container Management Tool like [Rancher Desktop](https://rancherdesktop.io/) (**open-source tool that runs Kubernetes and container management on your desktop**)
+
+## 3. Configure the DEMO (*do it only once*)
 
 ### Checkout current project
 
@@ -86,7 +92,7 @@ https://app.id123.io/free-tools/key-generator/
 - Public Key: [app.pub](src%2Fmain%2Fresources%2Fkeys%2Fapp.pub)
 - Private Key: [app.key](src%2Fmain%2Fresources%2Fkeys%2Fapp.key)
 
-## 3. Start the DEMO
+## 4. Start the DEMO
 
 ### Start Services (DB)
 ``` 
@@ -95,15 +101,15 @@ docker-compose start
 ### Run the Demo App (with your IDE)
 Use your favorite IDE to run the app as Spring Application.
 
-### Open Swagger UI
-Swagger UI allows you to access all exposed REST endpoints.
-
+### Use Swagger UI
+Swagger UI provides documentation out of the box and allows you to access and call all exposed REST endpoints.
 > http://localhost:9090/swagger-ui/index.html
 
-### Use Postman Collection
+### Use the provided Postman Collection
+Load the following collection in Postman:
 ```postman-collection/spring-jwt-demo.postman_collection.json```
 
-## Useful Commands & Links
+## 5. Useful Commands & Links
 
 ### Decode JWT
 
