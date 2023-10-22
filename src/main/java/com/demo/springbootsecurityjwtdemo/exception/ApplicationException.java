@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@Getter
 public class ApplicationException extends Exception {
-    @Getter
+
     private final ErrorCode code;
-    @Getter
     private final List<String> args = new ArrayList<>();
 
     public ApplicationException(ErrorCode code) {
