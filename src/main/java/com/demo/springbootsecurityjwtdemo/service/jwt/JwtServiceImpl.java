@@ -45,7 +45,7 @@ public class JwtServiceImpl implements JwtService {
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(this.jwtExpirationTimeInSeconds))
                 .subject(userDetails.getUsername())
-                .claim("roles", roles);
+                .claim("roles", roles); // You can add whatever fields(claims) you need
         additionalClaims.forEach(claimsBuilder::claim);
         JwtClaimsSet claims = claimsBuilder.build();
 

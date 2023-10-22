@@ -4,8 +4,8 @@ import com.demo.springbootsecurityjwtdemo.api.dto.CreateAccountRequestDto;
 import com.demo.springbootsecurityjwtdemo.api.dto.ErrorCode;
 import com.demo.springbootsecurityjwtdemo.api.dto.LoginRequestDto;
 import com.demo.springbootsecurityjwtdemo.entity.UserEntity;
-import com.demo.springbootsecurityjwtdemo.entity.UserRoleEntity;
-import com.demo.springbootsecurityjwtdemo.entity.UserStatusEntity;
+import com.demo.springbootsecurityjwtdemo.entity.UserRole;
+import com.demo.springbootsecurityjwtdemo.entity.UserStatus;
 import com.demo.springbootsecurityjwtdemo.exception.ApplicationException;
 import com.demo.springbootsecurityjwtdemo.repository.UserRepository;
 import com.demo.springbootsecurityjwtdemo.service.encryption.EmailEncryptionService;
@@ -40,11 +40,11 @@ public class UserServiceImpl implements UserService {
         String hashedPassword = createHash(dto.getPassword(), now);
 
         UserEntity user = UserEntity.builder()
-                .status(UserStatusEntity.ACTIVE)
+                .status(UserStatus.ACTIVE)
                 .createdOn(now)
                 .email(encryptedMail)
                 .password(hashedPassword)
-                .role(UserRoleEntity.USER)
+                .role(UserRole.USER)
                 .build();
         return this.userRepository.save(user);
     }

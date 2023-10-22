@@ -14,7 +14,7 @@ import java.util.UUID;
 @Builder
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "USERS")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,11 +29,11 @@ public class UserEntity {
 
     @Column(name = "ROLE", nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserRoleEntity role;
+    private UserRole role;
 
     @Column(name = "STATUS", nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserStatusEntity status;
+    private UserStatus status;
 
     @Column(name = "CREATED_ON", nullable = false)
     private LocalDate createdOn;

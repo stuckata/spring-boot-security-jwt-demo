@@ -18,13 +18,24 @@ import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.util.Arrays;
+import java.util.List;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration {
+
+    @Value("${cors.enabled}")
+    private boolean corsEnabled;
+
+    @Value("${cors.allowedOrigins}")
+    private String[] corsAllowedOrigins;
 
     @Value("${jwt.public.key}")
     private RSAPublicKey publicKey;
@@ -41,7 +52,7 @@ public class SecurityConfiguration {
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http
+        HttpSecurity securityConfig = http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                         .antMatchers(
                                 "/api/auth/login",
@@ -56,7 +67,8 @@ public class SecurityConfiguration {
                         .permitAll()
                         .anyRequest()
                         .authenticated())
-                .cors().disable()
+                .cors()
+                .and()
                 .csrf().disable()
                 .formLogin().disable()
                 .httpBasic().disable()
@@ -66,8 +78,27 @@ public class SecurityConfiguration {
                 .exceptionHandling(exceptions -> exceptions
                         .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
-                        .and())
-                .build();
+                        .and());
+
+        if (!this.corsEnabled) {
+            securityConfig.cors().disable();
+        }
+        return securityConfig.build();
+    }
+
+    /**
+     * Used by spring security if CORS is enabled.
+     */
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowedOrigins(Arrays.asList(this.corsAllowedOrigins));
+        config.setAllowCredentials(true);
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", config);
+        return source;
     }
 
     /**
