@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.demo</groupId>
-    <artifactId>spring-boot-security-jwt-mvn-demo</artifactId>
+    <artifactId>spring-boot-security-jwt-demo</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
     <name>spring-jwt-demo</name>
