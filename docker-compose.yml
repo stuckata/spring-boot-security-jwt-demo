@@ -1,11 +1,11 @@
 version: '3'
 services:
-  oracle-db:
-    container_name: security_demo_db
-    image: gvenzl/oracle-xe:21-slim
+  db:
+    container_name: postgres_db
+    image: postgres
     ports:
-      - "1521:1521"
-    volumes:
-      - C:\tmp\security-demo\oracle:/data
+      - "7432:5432"
     environment:
-      - ORACLE_PASSWORD=oracle
+      POSTGRES_DB: demo_db
+      POSTGRES_USER: demo_user
+      POSTGRES_PASSWORD: DemoUser1Pass2Qa
