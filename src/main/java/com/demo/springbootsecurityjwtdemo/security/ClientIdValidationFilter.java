@@ -37,7 +37,11 @@ public class ClientIdValidationFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(
+            @NonNull HttpServletRequest request,
+            @NonNull HttpServletResponse response,
+            @NonNull FilterChain filterChain
+    ) throws ServletException, IOException {
         String requestUri = request.getRequestURI();
         Optional<String> match = NO_CLIENT_ID_URLs.stream().filter(requestUri::contains).findFirst();
         if (match.isEmpty()) {
