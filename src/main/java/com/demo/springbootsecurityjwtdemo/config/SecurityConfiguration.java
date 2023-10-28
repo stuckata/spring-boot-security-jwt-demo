@@ -32,9 +32,6 @@ import java.util.List;
 @Configuration
 public class SecurityConfiguration {
 
-    @Value("${cors.enabled}")
-    private boolean corsEnabled;
-
     @Value("${cors.allowedOrigins}")
     private String[] corsAllowedOrigins;
 
@@ -63,6 +60,7 @@ public class SecurityConfiguration {
                         .permitAll()
                         .anyRequest()
                         .authenticated())
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .httpBasic(AbstractHttpConfigurer::disable)
@@ -72,9 +70,6 @@ public class SecurityConfiguration {
                         .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler()));
 
-        if (!this.corsEnabled) {
-            securityConfig.cors(AbstractHttpConfigurer::disable);
-        }
         return securityConfig.build();
     }
 
